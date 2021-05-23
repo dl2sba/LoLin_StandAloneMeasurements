@@ -1,0 +1,44 @@
+
+<!DOCTYPE HTML> 
+<html lang="de">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="style32.css">
+      <title>ESP32 Webserver</title>
+      <script>
+         function renew() {
+         	var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var myObj = JSON.parse(this.responseText);
+					document.getElementById("Hostname").innerHTML = myObj.Hostname;
+					document.getElementById("IPAdress").innerHTML = myObj.IPAdress;
+					document.getElementById("Uptime").innerHTML = myObj.Uptime;
+					document.getElementById("Vsupp").innerHTML = myObj.Vsupp;
+					document.getElementById("Vbatt").innerHTML = myObj.Vbatt;
+				}
+			};
+			xmlhttp.open("GET", "/sysinfo", true);
+			xmlhttp.send();
+         }
+         document.addEventListener('DOMContentLoaded', renew);
+		 setInterval(renew, 1000)      
+      </script>
+   </head>
+	<body>
+		<h2>ESP32 Status</h2>
+			<table width="75%">
+			<tr><td>Hostname</td><td><span id="Hostname"></span></td></tr>
+			<tr><td>IP-Addresss</td><td><span id="IPAdress"><span></td></tr>
+			<tr><td>Uptime</td><td><span id="Uptime"></span>s<td></tr>
+			<tr><td>Batteriespannung</td><td><span id="Vbatt"></span> V=</td></tr>
+			<tr><td>Versorgungsspannung</td><td><span id="Vsupp"></span> V=</td></tr>
+		</table>
+		<h2>Funktionen</h2>
+		<p>Dateimanager <a href="/spiffs.html">starten</a></p>
+		<p>Datendatei  <a href="/data.csv">anzeigen</a></p>
+		<h2>Administration</h2>
+		<p>AccessPoint <a href="/stopAP">stoppen</a></p>
+	</body>
+</html>
