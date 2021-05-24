@@ -13,7 +13,7 @@ The data is stored as CSV-based text file in the file "data.csv". This is a meas
 Currentyl the following data aquisition is done after the device wakes up by the timer:
 - The attached DHT22 sensor is read. Check its configuration in the file [measure.h](measure.h).
 - Then the two ADC channels (battery voltage and supply voltage) are read by the corresponding functions in measure.cpp(readVbatt() and readVsupp()). Here also the scaling is done according the external voltage deviders.
-- Eachs measurements contains a timestamp (seconds sindce last HW reset). This is a rough estimation controller by the 150kHz internal clock source of the ESP32
+- Eachs measurements contains a timestamp (seconds since last HW reset). This is a rough estimation controller by the 150kHz internal clock source of the ESP32
 
 ## Data access
 The file can be accessed via an integrated simple webserver.
