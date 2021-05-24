@@ -136,3 +136,6 @@ Some code is based on the work of Jens Fleischer https://fipsok.de/
 - The DHT library from ADAFRUIT: https://github.com/adafruit/DHT-sensor-library
 - Various ESP32 libraries provided by Espressif: https://github.com/espressif/arduino-esp32/tree/master/libraries These are installed, when you install the ESP32 plattform via this Boardmanager URL: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 - Check, that the Espressif Board in V1.0.6 is installed
+
+## license
+This work is published under https://creativecommons.org/licenses/by-nc-sa/4.0/
