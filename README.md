@@ -10,6 +10,11 @@ The PoC is shown an a cheap ESP32 board from Amazon
 A number of data points is stored in RTC-memory of the ESP32. If its limit is exceeded the data is appended to the flash filesystem in the ESP32.
 The data is stored as CSV-based text file in the file "data.csv". This is a measure to reduce the wear of the flash memory of the ESP32.
 
+Currentyl the following data aquisition is done after the device wakes up by the timer:
+- The attached DHT22 sensor is read. Check its configuration in the file [measure.h](measure.h).
+- Then the two ADC channels (battery voltage and supply voltage) are read by the corresponding functions in measure.cpp(readVbatt() and readVsupp()). Here also the scaling is done according the external voltage deviders.
+- Eachs measurements contains a timestamp (seconds sindce last HW reset). This is a rough estimation controller by the 150kHz internal clock source of the ESP32
+
 ## Data access
 The file can be accessed via an integrated simple webserver.
 The webserver is started via a hardware pushbutton GPIO_NUM_13 and listens on http://192.168.4.1.
@@ -121,9 +126,13 @@ Pull down PIN13 (as defined in data.h(WAKEUP_PIN). Details check next chapter.
 ## access point / webserver
 ### index page
 ![index.html](doc/ws1.jpg)
+
 This is the main page of the web server.
 - To restart measurement cycle click on the link "AccessPoint stoppen"
 - To launch the embedded filemanager click on the link "Dateimanager starten" credits go to https://fipsok.de/.
 ### file manager
 ![index.html](doc/ws2.jpg)
-This is the main page of the file manager. Here you can download the data file "data.csv" or simply use the link "Datendatei anzeigen" on the index page
+
+This is the main page of the file manager.
+- Here you can download the data file "data.csv" or simply use the link "Datendatei anzeigen" on the index page
+- Be aware of the "delete links" - they work without any security confirmation :-)
