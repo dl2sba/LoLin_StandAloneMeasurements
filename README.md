@@ -20,14 +20,6 @@ The file can be accessed via an integrated simple webserver.
 The webserver is started via a hardware pushbutton GPIO_NUM_13 and listens on http://192.168.4.1.
 To revert back to data aquisition in low power mode, the webserver must be terminated via the web interface.
 
-## Credits
-Some code is based on the work of Jens Fleischer https://fipsok.de/
-
-## libraries
-- The DHT library from ADAFRUIT: https://github.com/adafruit/DHT-sensor-library
-- Various ESP32 libraries provided by Espressif: https://github.com/espressif/arduino-esp32/tree/master/libraries These are installed, when you install the ESP32 plattform via this Boardmanager URL: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-- Check, that the Espressif Board in V1.0.6 is installed
-
 ## serial logging
 To enable serial logging add "#define DEBUGGING" in data.h.
 ### log on RESET
@@ -136,3 +128,11 @@ This is the main page of the web server.
 This is the main page of the file manager.
 - Here you can download the data file "data.csv" or simply use the link "Datendatei anzeigen" on the index page
 - Be aware of the "delete links" - they work without any security confirmation :-)
+
+## credits
+Some code is based on the work of Jens Fleischer https://fipsok.de/
+
+## libraries
+- The DHT library from ADAFRUIT: https://github.com/adafruit/DHT-sensor-library
+- Various ESP32 libraries provided by Espressif: https://github.com/espressif/arduino-esp32/tree/master/libraries These are installed, when you install the ESP32 plattform via this Boardmanager URL: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+- Check, that the Espressif Board in V1.0.6 is installed
